@@ -1,23 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tic Tac Toe</title>
-</head>
-<body>
-  <h1>Tic Tac Toe!</h1>
-  <div id='board'>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-    <div class='cell'></div>
-  </div>
-  <button id='start'>Start Game</button>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <h1>Tic Tac Toe!</h1>
+    <div id="board">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+    </div>
+    <h2>Status Area</h2>
+    <p id="statusBox">Player Status</p>
+    <button onclick="disableButton()" id="start">Start Game</button>
+    <script>
+      let startButton = document.getElementById("start");
+      console.log({ startButton });
+
+      function disableButton() {
+        //disables Start Game button
+        document.getElementById("start").disabled = true;
+        alert("Button has been disabled.");
+      }
+
+      function canMoveTo(cell, boardCells) {
+        let cellContents = boardCells[cell - 1];
+        if (cellContents === "x" || cellContents === "O") {
+          return false;
+        }
+        return true;
+      }
+
+      function makeMove(mark, cell, boardCells) {
+        if (canMoveTo(cell, boardCells)) {
+          //make the move, then return a status and board with changes applied
+          boardCells[cell - 1] = mark;
+          return {
+            status: "success",
+            newBoard: boardCells,
+          };
+        }
+        return {
+          status: "failure",
+          newBoard: boardCells,
+        };
+      }
+
+      let allCells = document.querySelectorAll(".cell");
+      console.log({ allCells });
+
+      for (let cell of allCells) {
+        cell.addEventListener("click", function (theEvent) {
+          console.log({ theEvent });
+          alert(
+            "Hi, I am from the click on cell " + theEvent.target.textContent
+          );
+
+          theEvent.target.textContent = "x";
+        });
+      }
+    </script>
+  </body>
 </html>

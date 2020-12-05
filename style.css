@@ -6,7 +6,40 @@
 }
 
 .cell {
-  background-color: lightblue;
   text-align: center;
+  padding-top: 25px;
+  font-size: 5em;
+  background-color: lightblue;
   border: 1px solid black;
+}
+
+#start {
+  border: 0;
+  line-height: 2;
+  padding: 2px 20px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: black;
+  background-color: rgb(255, 201, 121);
+  border-radius: 10%;
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6) inset -2px -2px 3px
+    rgba(0, 0, 0, 0.6);
+}
+#start:hover {
+  background-color: rgb(235, 208, 121);
+}
+
+#start:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6) inset 2px 2px 3px
+    rgba(0, 0, 0, 0.6);
+}
+
+#start:disabled {
+  background-color: grey;
 }
