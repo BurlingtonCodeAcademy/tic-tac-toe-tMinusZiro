@@ -9,65 +9,19 @@
   <body>
     <h1>Tic Tac Toe!</h1>
     <div id="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
+      <div onclick="startGame(this)" class="cell cellone"></div>
+      <div onclick="startGame(this)" class="cell celltwo"></div>
+      <div onclick="startGame(this)" class="cell cellthree"></div>
+      <div onclick="startGame(this)" class="cell cellfour"></div>
+      <div onclick="startGame(this)" class="cell cellfive"></div>
+      <div onclick="startGame(this)" class="cell cellsix"></div>
+      <div onclick="startGame(this)" class="cell cellseven"></div>
+      <div onclick="startGame(this)" class="cell celleight"></div>
+      <div onclick="startGame(this)" class="cell cellnine"></div>
     </div>
     <h2>Status Area</h2>
     <p id="statusBox">Player Status</p>
-    <button onclick="disableButton()" id="start">Start Game</button>
-    <script>
-      let startButton = document.getElementById("start");
-      console.log({ startButton });
-
-      function disableButton() {
-        //disables Start Game button
-        document.getElementById("start").disabled = true;
-        alert("Button has been disabled.");
-      }
-
-      function canMoveTo(cell, boardCells) {
-        let cellContents = boardCells[cell - 1];
-        if (cellContents === "x" || cellContents === "O") {
-          return false;
-        }
-        return true;
-      }
-
-      function makeMove(mark, cell, boardCells) {
-        if (canMoveTo(cell, boardCells)) {
-          //make the move, then return a status and board with changes applied
-          boardCells[cell - 1] = mark;
-          return {
-            status: "success",
-            newBoard: boardCells,
-          };
-        }
-        return {
-          status: "failure",
-          newBoard: boardCells,
-        };
-      }
-
-      let allCells = document.querySelectorAll(".cell");
-      console.log({ allCells });
-
-      for (let cell of allCells) {
-        cell.addEventListener("click", function (theEvent) {
-          console.log({ theEvent });
-          alert(
-            "Hi, I am from the click on cell " + theEvent.target.textContent
-          );
-
-          theEvent.target.textContent = "x";
-        });
-      }
-    </script>
+    <button onclick="startGame(this)" id="start">Start Game</button>
+    <script src="ticTacToe.js"></script>
   </body>
 </html>
