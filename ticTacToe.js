@@ -1,23 +1,67 @@
 let allCells = document.querySelectorAll(".cell");
 console.log({ allCells });
-let playerX = "X";
-let playerO = "O";
+let gameBoard = document.getElementById("board").textContent;
 let currentPlayer = " ";
+/*
 let count = 0;
 let boardCount = document.getElementById("board");
 boardCount.onclick = function () {
   count++;
-  document.getElementById("statusBox").innerHTML = "Turn: " + count;
+  document.getElementById("turn-count").innerHTML = "Turn: " + count;
 };
+*/
 
+//let board = document.getElementById("board");
+//board.addEventListener("click", () => {
+//when cell is clicked flip player unless cell is already full
+
+//document.getElementById("totalCount").textContent = count;
+//});
+
+class Player {
+  constructor(defaultState = " ", possibleStates = ["X", "O"]) {
+    this.state = possibleStates[0];
+    this.possibleStates = possibleStates;
+    this.defaultState = defaultState;
+  }
+
+  rules() {
+    if (gameBoard != "X" && gameBoard != "O") {
+      return this.flip();
+    } else {
+      console.log(alert("Please select an empty cell"));
+      return false;
+    }
+  }
+
+  flip() {
+    //switch players
+    if (
+      gameBoard != this.possibleStates[0] &&
+      gameBoard != this.possibleStates[1]
+    ) {
+      if (this.state === this.possibleStates[0]) {
+        this.state = this.possibleStates[1];
+      } else {
+        this.state = this.possibleStates[0];
+      }
+      console.log(alert("player flips"));
+      return this.state;
+    }
+    console.log(alert("Please select an empty cell"));
+    return false;
+  }
+}
+
+const player = new Player();
+//when user clicks on a cell that already has an X or O
+//then nothing happens and an alert pops up that asks the user
+//to please select an empty cell
+//after the user selects an empty cell it switches to the other user until
+//three Xs or Os are linked and then the games ends with a winner
 function startGame() {
   document.getElementById("start").disabled = true;
-
-  if (count % 2 === 0) {
-    currentPlayer = playerX;
-  } else {
-    currentPlayer = playerO;
-  }
+  /*
   if (
     (document.getElementById("cellone").textContent &&
       document.getElementById("celltwo").textContent &&
@@ -45,56 +89,41 @@ function startGame() {
       document.getElementById("cellseven").textContent === "X")
   ) {
     console.log("winner");
-    alert(`Congratulations! Player wins`);
-    let currentPlayer = document.getElementById("playerStatus").textContent;
-    return currentPlayer;
+    alert(`Congratulations! Player X wins`);
+  } else if (
+    (document.getElementById("cellone").textContent &&
+      document.getElementById("celltwo").textContent &&
+      document.getElementById("cellthree").textContent === "O") ||
+    (document.getElementById("cellfour").textContent &&
+      document.getElementById("cellfive").textContent &&
+      document.getElementById("cellsix").textContent === "O") ||
+    (document.getElementById("cellseven").textContent &&
+      document.getElementById("celleight").textContent &&
+      document.getElementById("cellnine").textContent === "O") ||
+    (document.getElementById("cellone").textContent &&
+      document.getElementById("cellfour").textContent &&
+      document.getElementById("cellseven").textContent === "O") ||
+    (document.getElementById("celltwo").textContent &&
+      document.getElementById("cellfive").textContent &&
+      document.getElementById("celleight").textContent === "O") ||
+    (document.getElementById("cellthree").textContent &&
+      document.getElementById("cellsix").textContent &&
+      document.getElementById("cellnine").textContent === "O") ||
+    (document.getElementById("cellone").textContent &&
+      document.getElementById("cellfive").textContent &&
+      document.getElementById("cellnine").textContent === "O") ||
+    (document.getElementById("cellthree").textContent &&
+      document.getElementById("cellfive").textContent &&
+      document.getElementById("cellseven").textContent === "O")
+  ) {
+    console.log("winner");
+    alert(`Congratulations! Player O wins`);
   }
-
+*/
   for (let cell of allCells) {
     cell.addEventListener("click", function (theEvent) {
       console.log({ theEvent });
-      return (theEvent.target.textContent = currentPlayer);
+      return (theEvent.target.textContent = player.flip());
     });
   }
 }
-
-/*
-if (
-  (allCells[1] && allCells[2] && allCells[3] === "X") ||
-  (allCells[4] && allCells[5] && allCells[6] === "X") ||
-  (allCells[7] && allCells[8] && allCells[9] === "X") ||
-  (allCells[1] && allCells[4] && allCells[7] === "X") ||
-  (allCells[2] && allCells[5] && allCells[8] === "X") ||
-  (allCells[3] && allCells[6] && allCells[9] === "X") ||
-  (allCells[1] && allCells[5] && allCells[9] === "X") ||
-  (allCells[3] && allCells[5] && allCells[7] === "X")
-) {
-  */
-
-/*
- (document.getElementsById("cellone") &&
- document.getElementsById("celltwo") &&
- document.getElementsById("cellthree") === "X") ||
-(document.getElementsById("cellfour") &&
- document.getElementsById("cellfive") &&
- document.getElementsById("celsix") == "X") ||
-(document.getElementsById("cellseven") &&
- document.getElementsById("celleight") &&
- document.getElementsById("cellnine") === "X") ||
-(document.getElementsById("cellone") &&
- document.getElementsById("cellfour") &&
- document.getElementsById("cellseven") === "X") ||
-(document.getElementsById("celltwo") &&
- document.getElementsById("cellfive") &&
- document.getElementsById("celleight") === "X") ||
-(document.getElementsById("cellthree") &&
- document.getElementsById("cellsix") &&
- document.getElementsById("cellnine") === "X") ||
-(document.getElementsById("cellone") &&
- document.getElementsById("cellfive") &&
- document.getElementsById("cellnine") === "X") ||
-(document.getElementsById("cellthree") &&
- document.getElementsById("cellfive") &&
- document.getElementsById("cellseven") === "X")
- window.location.reload
- */

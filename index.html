@@ -7,24 +7,26 @@
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <h1>Tic Tac Toe!</h1>
+    <div><h1>Tic Tac Toe!</h1></div>
+    <div><p id="turn-count">Turn: 0</p></div>
     <div id="board">
-      <div onclick="startGame(this)" id="cellone" class="cell"></div>
-      <div onclick="startGame(this)" id="celltwo" class="cell"></div>
-      <div onclick="startGame(this)" id="cellthree" class="cell"></div>
-      <div onclick="startGame(this)" id="cellfour" class="cell"></div>
-      <div onclick="startGame(this)" id="cellfive" class="cell"></div>
-      <div onclick="startGame(this)" id="cellsix" class="cell"></div>
-      <div onclick="startGame(this)" id="cellseven" class="cell"></div>
-      <div onclick="startGame(this)" id="celleight" class="cell"></div>
-      <div onclick="startGame(this)" id="cellnine" class="cell"></div>
+      <div id="cellone" class="cell"></div>
+      <div id="celltwo" class="cell"></div>
+      <div id="cellthree" class="cell"></div>
+      <div id="cellfour" class="cell"></div>
+      <div id="cellfive" class="cell"></div>
+      <div id="cellsix" class="cell"></div>
+      <div id="cellseven" class="cell"></div>
+      <div id="celleight" class="cell"></div>
+      <div id="cellnine" class="cell"></div>
     </div>
-    <div>
-      <div><h2>Status Area</h2></div>
-      <div><p id="statusBox">Turn: 0</p></div>
-      <div><p id="playerStatus"></p></div>
+    <div id="status-area">
+      <div><h2 class="status-title">Status Area</h2></div>
+      <div><p id="playerStatus">Player Status</p></div>
     </div>
-    <button onclick="startGame(this)" id="start">Start Game</button>
+    <div id="flex-button">
+      <button onclick="startGame(this)" id="start">Start Game</button>
+    </div>
     <script src="ticTacToe.js"></script>
   </body>
 </html>
